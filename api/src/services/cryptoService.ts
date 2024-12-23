@@ -1,8 +1,8 @@
-import { CryptoDocument, CryptoModel } from '../models/cryptoModel';
-import { ICrypto } from '../models/cryptoModel';
+import { CryptoModel, ICrypto } from '../models/cryptoModel';
 import { PaginatedResponse } from '../models/interfaces';
 
-export const addCrypto = async (cryptoData: ICrypto): Promise<CryptoDocument> => {
+// Add a new crypto
+export const addCrypto = async (cryptoData: ICrypto): Promise<ICrypto> => {
     try {
         const newCrypto = new CryptoModel(cryptoData);
         return await newCrypto.save();
@@ -12,10 +12,11 @@ export const addCrypto = async (cryptoData: ICrypto): Promise<CryptoDocument> =>
     }
 };
 
+// Get crypto list with pagination
 export const getCryptoList = async (
     page: number = 1,
     limit: number = 10
-): Promise<PaginatedResponse<CryptoDocument>> => {
+): Promise<PaginatedResponse<ICrypto>> => {
     const skip = (page - 1) * limit;
 
     try {
