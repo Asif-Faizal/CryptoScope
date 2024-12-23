@@ -2,6 +2,9 @@
 .kotlin
 .gradle
 .fleet
+api/node_modules
+api/.env
+api/package-lock.json
 **/build/
 xcuserdata
 !src/**/build/
